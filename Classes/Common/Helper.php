@@ -631,6 +631,10 @@ class Helper
      */
     public static function processDBasAdmin(array $data = [], array $cmd = [], $reverseOrder = false, $cmdFirst = false)
     {
+        if($GLOBALS['BE_USER'] === null) {
+            $GLOBALS['BE_USER'] = GeneralUtility::makeInstance('TYPO3\CMS\Core\Authentication\BackendUserAuthentication');
+            $GLOBALS['BE_USER']->start();
+        }
         if (
             \TYPO3_MODE === 'BE'
             && $GLOBALS['BE_USER']->isAdmin()
