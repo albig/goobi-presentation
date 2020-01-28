@@ -631,16 +631,14 @@ class Helper
      */
     public static function processDBasAdmin(array $data = [], array $cmd = [], $reverseOrder = false, $cmdFirst = false)
     {
-        if($GLOBALS['BE_USER'] === null) {
-            $GLOBALS['BE_USER'] = GeneralUtility::makeInstance('TYPO3\CMS\Core\Authentication\BackendUserAuthentication');
-            $GLOBALS['BE_USER']->start();
-        }
         if (
             \TYPO3_MODE === 'BE'
             && $GLOBALS['BE_USER']->isAdmin()
         ) {
             // Instantiate TYPO3 core engine.
             $dataHandler = GeneralUtility::makeInstance(\TYPO3\CMS\Core\DataHandling\DataHandler::class);
+            // We do not use workspaces and have to bypass restrictions in DataHandler.
+            $dataHandler->bypassWorkspaceRestrictions = true;
             // Load data and command arrays.
             $dataHandler->start($data, $cmd);
             // Process command map first if default order is reversed.
