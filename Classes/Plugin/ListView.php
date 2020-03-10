@@ -109,7 +109,7 @@ class ListView extends \Kitodo\Dlf\Common\AbstractPlugin
         if ($this->piVars['pointer'] < $maxPages - 1) {
             $output .= $this->pi_linkTP_keepPIvars($this->pi_getLL('nextPage', '&gt;', true), ['pointer' => $this->piVars['pointer'] + 1], true);
         } else {
-            $output .= '<span>' .$this->pi_getLL('nextPage', '&gt;', true) . '</span>';
+            $output .= '<span>' . $this->pi_getLL('nextPage', '&gt;', true) . '</span>';
         }
         return $output;
     }
