@@ -671,6 +671,13 @@ Page View
        tx-dlf-map
 
  - :Property:
+       addJStoBody
+   :Data Type:
+       :ref:`t3tsref:data-type-boolean`
+   :Default:
+       0
+
+ - :Property:
        crop
    :Data Type:
        :ref:`t3tsref:data-type-boolean`
